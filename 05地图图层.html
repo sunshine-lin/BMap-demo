@@ -1,0 +1,32 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+<title>02，控件</title>  
+<style type="text/css">  
+html{height:100%}  
+body{height:100%;margin:0px;padding:0px}  
+#container{height:100%}  
+</style>  
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=rvtstzoUGrhyRhDjaD5sDpHdpuTrER2Q">
+</script>
+</head>  
+ 
+<body>  
+<div id="container"></div> 
+<script type="text/javascript"> 
+// 所有叠加或覆盖到地图的内容，我们统称为地图覆盖物。如标注、矢量图形元素(包括：折线和多边形和圆)、信息窗口等。覆盖物拥有自己的地理坐标，当您拖动或缩放地图时，它们会相应的移动
+var map = new BMap.Map("container");         
+var point = new BMap.Point(116.404, 39.915);  // 创建点坐标     
+map.centerAndZoom(point, 13);                 // 初始化地图，设置中心点坐标和地图级别     
+var traffic = new BMap.TrafficLayer();        // 创建交通流量图层实例      
+map.addTileLayer(traffic);                    // 将图层添加到地图上
+map.addEventListener('click',function () {
+	// 移除图层
+	this.removeTileLayer(traffic); 
+})
+
+</script>  
+</body>  
+</html>
